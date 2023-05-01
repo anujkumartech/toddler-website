@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Numbers</h1>
+    <div class="content">
+        <button mat-raised-button color="primary" (click)="currentNumber = currentNumber - 1"
+            [disabled]="currentNumber === 1">Previous</button>
+        <h2>{{ currentNumber }}</h2>
+        <button mat-raised-button color="primary" (click)="currentNumber = currentNumber + 1"
+            [disabled]="currentNumber === 10">Next</button>
+    </div>
+    <button mat-raised-button color="accent" (click)="toggleAutoplay()">
+        {{ autoplay ? 'Stop' : 'Start' }} autoplay
+    </button>
+</div>

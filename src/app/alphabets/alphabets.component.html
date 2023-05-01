@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>Alphabets</h1>
+    <div class="content">
+        <button mat-raised-button color="primary"
+            (click)="currentAlphabet = alphabetArray[alphabetArray.indexOf(currentAlphabet) - 1]"
+            [disabled]="alphabetArray.indexOf(currentAlphabet) === 0">Previous</button>
+        <h2>{{ currentAlphabet }}</h2>
+        <button mat-raised-button color="primary"
+            (click)="currentAlphabet = alphabetArray[alphabetArray.indexOf(currentAlphabet) + 1]"
+            [disabled]="alphabetArray.indexOf(currentAlphabet) === 25">Next</button>
+    </div>
+    <button mat-raised-button color="accent" (click)="toggleAutoplay()">
+        {{ autoplay ? 'Stop' : 'Start' }} autoplay
+    </button>
+</div>
