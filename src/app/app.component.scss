@@ -6,3 +6,50 @@
     margin: 0 10px;
   }
   
+  .container {
+    height: 100vh;
+    padding-top: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #f0f4f8;
+  }
+  
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 5rem;
+    color: #3f51b5;
+  }
+  
+  .content {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  h2.number {
+    font-size: 15rem;
+    font-weight: bold;
+    margin: 1rem;
+    color: #ff4081; //change the color to a more eye-catching one
+  }
+  
+  button {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+  }
+  
+  @media(max-width: 600px) {
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  
+    h2.number {
+      font-size: 10rem;
+    }
+  
+    button {
+      font-size: 1rem;
+      margin: 0.2rem;
+    }
+  }
+  

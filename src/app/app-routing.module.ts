@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NumbersComponent } from './numbers/numbers.component';
 import { AlphabetsComponent } from './alphabets/alphabets.component';
 
@@ -11,6 +12,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule, FlexLayoutModule],
 })
 export class AppRoutingModule {}
