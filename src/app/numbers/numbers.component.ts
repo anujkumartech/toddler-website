@@ -23,7 +23,7 @@ export class NumbersComponent implements OnInit {
         if (this.currentNumber > 10) {
           this.currentNumber = 1;
         }
-      }, 1000);
+      }, 3000);
     } else {
       clearInterval(this.autoplayInterval);
     }

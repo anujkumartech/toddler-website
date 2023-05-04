@@ -26,7 +26,7 @@ export class AlphabetsComponent implements OnInit {
           currentIndex = 0;
         }
         this.currentAlphabet = this.alphabetArray[currentIndex];
-      }, 1000);
+      }, 3000);
     } else {
       clearInterval(this.autoplayInterval);
     }
