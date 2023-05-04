@@ -1,18 +1,37 @@
 mat-toolbar {
     a {
-        margin: 0 10px;
+      margin: 0 10px;
+      color: white; // White color for desktop navigation items
+      font-weight: bold; // Make the text bold
+      transition: color 0.3s ease; // Smooth color transition effect
     }
-}
-
-.sidenav {
+  
+    a:hover {
+      color: #007BFF; // Bright blue color on hover
+    }
+  }
+  
+  .sidenav {
     width: 200px;
-
+  
     a {
-        display: block;
-        margin: 10px 0;
+      display: block;
+      margin: 10px 0;
+      color: #007BFF; // Bright blue color for sidenav items
+      font-weight: bold; // Make the text bold
+      transition: color 0.3s ease; // Smooth color transition effect
     }
-}
-
-.spacer {
+  
+    a:hover {
+      color: #0056b3; // Darker blue color on hover
+    }
+  }
+  
+  .spacer {
     flex: 1 1 auto;
-}
+  }
+  
+  .content {
+    padding-top: 64px; // Adjust to the height of your toolbar
+  }
+  
