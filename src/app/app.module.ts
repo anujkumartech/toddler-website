@@ -12,13 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NumbersComponent } from './numbers/numbers.component';
 import { AlphabetsComponent } from './alphabets/alphabets.component';
 import { NavComponent } from './nav/nav.component';
+import { ShapeComponent } from './shape/shape.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NumbersComponent,
     AlphabetsComponent,
-    NavComponent
+    NavComponent,
+    ShapeComponent
   ],
   imports: [
     BrowserModule,

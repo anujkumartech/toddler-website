@@ -1,0 +1,93 @@
+.shape {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.square {
+    background-color: #3f51b5;
+}
+
+.circle {
+    border-radius: 50%;
+    background-color: #ff4081;
+}
+
+.triangle {
+    width: 0; 
+    height: 0; 
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 173.2px solid #3f51b5; // We're using the site's primary color here
+    margin: 0 auto; // To center the triangle
+}
+
+.rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: #3f51b5;
+}
+
+.diamond {
+    width: 100px;
+    height: 100px;
+    background: #3f51b5;
+    transform: rotate(45deg);
+    margin: 50px auto; // To center the diamond
+}
+
+.pentagon {
+    margin: 10px auto; 
+    position: relative;
+    width: 200px;
+    height: 125px;
+    background: #3f51b5;
+}
+
+.pentagon:before {
+    content: "";
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 200px;
+    height: 70px;
+    background: #3f51b5;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+
+@media(max-width: 600px) {
+    .shape {
+        width: 100px;
+        height: 100px;
+    }
+
+    .triangle {
+        width: 0; 
+        height: 0; 
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 86.6px solid #3f51b5; // Using the site's primary color
+    }
+
+    .rectangle {
+        width: 200px;
+        height: 100px;
+    }
+
+    .diamond {
+        width: 100px;
+        height: 100px;
+        margin: 10px auto; 
+    }
+
+    .pentagon {
+        margin: 10px auto; 
+        width: 100px;
+        height: 87px;
+    }
+    .pentagon:before {
+        width: 100px;
+        height: 50px;
+    }
+}

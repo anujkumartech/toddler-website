@@ -3,6 +3,7 @@
       <nav>
         <a mat-button routerLink="/numbers" (click)="sidenav.close()">Numbers</a>
         <a mat-button routerLink="/alphabets" (click)="sidenav.close()">Alphabets</a>
+        <a mat-button routerLink="/shapes" (click)="sidenav.close()">Shapes</a>
       </nav>
     </mat-sidenav>
   
@@ -16,6 +17,7 @@
         <nav *ngIf="(isHandset$ | async) === false">
           <a mat-button routerLink="/numbers">Numbers</a>
           <a mat-button routerLink="/alphabets">Alphabets</a>
+          <a mat-button routerLink="/shapes">Shapes</a>
         </nav>
       </mat-toolbar>
       <div class="content">
