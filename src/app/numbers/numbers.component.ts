@@ -20,7 +20,7 @@ export class NumbersComponent implements OnInit {
     if (this.autoplay) {
       this.autoplayInterval = setInterval(() => {
         this.currentNumber++;
-        if (this.currentNumber > 20) {
+        if (this.currentNumber > 40) {
           this.currentNumber = 1;
         }
       }, 2000);
