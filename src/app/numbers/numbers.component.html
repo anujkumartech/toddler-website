@@ -3,7 +3,7 @@
     <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="80px" fxLayoutGap.lt-md="60px">
         <button mat-raised-button color="primary" (click)="currentNumber = currentNumber - 1" [disabled]="currentNumber === 1">Previous</button>
         <h2 class="number">{{ currentNumber }}</h2>
-        <button mat-raised-button color="primary" (click)="currentNumber = currentNumber + 1" [disabled]="currentNumber === 20">Next</button>
+        <button mat-raised-button color="primary" (click)="currentNumber = currentNumber + 1" [disabled]="currentNumber === 40">Next</button>
         <button mat-raised-button color="accent" (click)="toggleAutoplay()">
             {{ autoplay ? 'Stop' : 'Start' }} autoplay
         </button>
