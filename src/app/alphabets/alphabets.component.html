@@ -6,7 +6,7 @@
             {{ isUppercase ? 'Switch to Lowercase' : 'Switch to Uppercase' }}
         </button>
     </div>
-    <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="120px" fxLayoutGap.lt-md="60px">
+    <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="120px" fxLayoutGap.lt-md="100px">
         <button mat-raised-button color="primary"
             (click)="currentAlphabet = alphabetArray[alphabetArray.indexOf(currentAlphabet) - 1]"
             [disabled]="alphabetArray.indexOf(currentAlphabet) === 0">Previous</button>
