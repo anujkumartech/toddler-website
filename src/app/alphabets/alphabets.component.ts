@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alphabets.component.scss']
 })
 export class AlphabetsComponent implements OnInit {
+  isUppercase = true; // New property to track uppercase/lowercase
   alphabetArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   currentAlphabet = this.alphabetArray[0];
   autoplay = false;
@@ -14,6 +15,16 @@ export class AlphabetsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleCase(): void {
+    this.isUppercase = !this.isUppercase;
+    if (this.isUppercase) {
+      this.alphabetArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    } else {
+      this.alphabetArray = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    }
+    this.currentAlphabet = this.alphabetArray[0]; // Reset to first alphabet of the new case
   }
 
   toggleAutoplay(): void {
