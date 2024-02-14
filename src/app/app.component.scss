@@ -36,6 +36,9 @@
     font-weight: bold;
     margin: 1rem;
     color: #ff4081; //change the color to a more eye-catching one
+    &.alphabets {
+      margin-bottom: 5rem !important;
+    }
   }
   
   button {

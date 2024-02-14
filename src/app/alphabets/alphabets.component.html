@@ -2,15 +2,15 @@
     <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutAlign.xs="start start" fxLayoutGap="10px">
         <h1>Alphabets</h1>
         <!-- Toggle Case Button -->
-        <button mat-raised-button color="primary" (click)="toggleCase()">
+    </div>
+    <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="100px" fxLayoutGap.lt-md="60px">
+        <button mat-raised-button color="primary" (click)="toggleCase()"class="first-button">
             {{ isUppercase ? 'Switch to Lowercase' : 'Switch to Uppercase' }}
         </button>
-    </div>
-    <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="120px" fxLayoutGap.lt-md="100px">
         <button mat-raised-button color="primary"
             (click)="currentAlphabet = alphabetArray[alphabetArray.indexOf(currentAlphabet) - 1]"
             [disabled]="alphabetArray.indexOf(currentAlphabet) === 0">Previous</button>
-        <h2 class="number">{{ currentAlphabet }}</h2>
+        <h2 class="number alphabets">{{ currentAlphabet }}</h2>
         <button mat-raised-button color="primary"
             (click)="currentAlphabet = alphabetArray[alphabetArray.indexOf(currentAlphabet) + 1]"
             [disabled]="alphabetArray.indexOf(currentAlphabet) === alphabetArray.length - 1">Next</button>
