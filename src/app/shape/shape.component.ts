@@ -7,7 +7,7 @@ import { Observable, timer } from 'rxjs';
   styleUrls: ['./shape.component.scss']
 })
 export class ShapeComponent {
-  shapes = ['square', 'circle', 'triangle', 'rectangle', 'diamond', 'pentagon', 'semi-cirlcle','start', 'hexagon'];
+  shapes = ['square', 'circle', 'triangle', 'rectangle', 'diamond', 'pentagon'];
 
   currentShapeIndex = 0;
   autoplay = false;
