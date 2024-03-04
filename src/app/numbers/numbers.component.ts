@@ -9,6 +9,8 @@ export class NumbersComponent implements OnInit {
   currentNumber = 1;
   autoplay = false;
   autoplayInterval: any;
+  readonly maxNumber = 50; // Declare a readonly property for the maximum number
+
 
   constructor() { }
 
@@ -20,7 +22,7 @@ export class NumbersComponent implements OnInit {
     if (this.autoplay) {
       this.autoplayInterval = setInterval(() => {
         this.currentNumber++;
-        if (this.currentNumber > 50) {
+        if (this.currentNumber > this.maxNumber) { // Use the maxNumber property here
           this.currentNumber = 1;
         }
       }, 2000);
