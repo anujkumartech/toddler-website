@@ -2,7 +2,12 @@
     <h1>Shapes</h1>
     <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="80px" fxLayoutGap.lt-md="60px">
         <button mat-raised-button color="primary" (click)="previousShape()" [disabled]="currentShapeIndex === 0">Previous</button>
-        <div class="shape" [ngClass]="shapes[currentShapeIndex]"></div>
+        <!-- Shape Container -->
+        <div>
+            <div class="shape" [ngClass]="shapes[currentShapeIndex].class"></div>
+            <!-- Shape Name Displayed Below -->
+            <p class="shape-name">{{ shapes[currentShapeIndex].name}}</p>
+        </div>
         <button mat-raised-button color="primary" (click)="nextShape()" [disabled]="currentShapeIndex === shapes.length - 1">Next</button>
         <button mat-raised-button color="accent" (click)="toggleAutoplay()">
             {{ autoplay ? 'Stop' : 'Start' }} autoplay

@@ -5,14 +5,14 @@
 }
 
 .square {
-    background-color: #ff0000;
-    border: 5px solid black; /* Outline */
+    background-color: #6bccea;
+    
 }
 
 .circle {
     border-radius: 80%;
     background-color: #ff0080;
-    border: 5px solid black; /* Outline */
+    
 }
 
 .triangle {
@@ -20,7 +20,7 @@
     height: 0; 
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
-    border-bottom: 200.2px solid #52f729fe; // We're using the site's primary color here
+    border-bottom: 189.2px solid #52f729fe; // We're using the site's primary color here
     margin: 0 auto; // To center the triangle
 }
 
@@ -28,15 +28,16 @@
     width: 300px;
     height: 200px;
     background-color: #076fff;
-    border: 5px solid black; /* Outline */
+    
 }
 
 .diamond {
-    width: 200px;
-    height: 200px;
-    background: #ff8800;
-    transform: rotate(45deg);
-}
+    width: 160px; /* Set the width of the diamond */
+    height: 160px; /* Set the height of the diamond, should be equal to width for a perfect diamond shape */
+    background-color: rgb(255, 102, 0); /* Set the diamond's color */
+    transform: rotate(45deg); /* Rotate the square 45 degrees to form a diamond */
+    margin: 50px; /* Optional: Adds some space around the diamond */
+  }
 
 .pentagon {
     margin: 20px auto; 
@@ -53,7 +54,7 @@
     left: 0;
     width: 200px;
     height: 70px;
-    background: #800080;
+    background: rgb(128, 0, 128);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
@@ -101,7 +102,7 @@
     height: 300px; /* Height of the oval, make it less than the width for an oval shape */
     background-color: rgb(10, 10, 10); /* Background color of the oval */
     border-radius: 50%; /* This creates the rounded corners necessary for the oval shape */
-    border: 5px solid rgb(172, 17, 17);
+    
   }
 
 
@@ -112,6 +113,21 @@
     background-color: rgb(75, 29, 20); /* Background color of the semi-circle */
     border-top-left-radius: 200px; /* Adjusted to maintain the rounded edge */
     border-top-right-radius: 200px; /* Adjusted to maintain the rounded edge */
-    border: 5px solid black; /* Outline added */
+    
   }
 
+
+
+  .heart {
+    display: inline-block;
+    width: 200px;
+    aspect-ratio: 1;
+    border-image: radial-gradient(rgb(255, 0, 0) 69%, #0000 70%) 84.5%/50%;
+    clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+  }
+
+
+
+  .shape-name {
+    font-size: 70px; /* Set the font size as desired */
+  }

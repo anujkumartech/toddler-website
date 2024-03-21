@@ -7,27 +7,37 @@ import { Observable, timer } from 'rxjs';
   styleUrls: ['./shape.component.scss']
 })
 export class ShapeComponent {
-  shapes = ['square', 'circle', 'triangle', 'rectangle', 'diamond', 'pentagon', 'hexagon', 'star', 'oval', 'semi-circle'];
-
   currentShapeIndex = 0;
+  shapes = [
+    { class: 'circle', name: 'Circle' },
+    { class: 'square', name: 'Square' },
+    { class: 'triangle', name: 'Triangle' },
+    { class: 'rectangle', name: 'Rectangle' },
+    { class: 'pentagon', name: 'Pentagon'},
+    { class: 'hexagon', name: 'Hexagon'},
+    { class: 'star', name: 'Star'},
+    { class: 'semi-circle', name: 'Semi-Circle'},
+    { class: 'heart', name: 'Heart'},
+    { class: 'diamond', name: 'Diamond'}
+  ];
   autoplay = false;
   autoplayTimer?: Observable<number>;
 
   constructor() { }
 
-  previousShape() {
+  previousShape(): void {
     if (this.currentShapeIndex > 0) {
       this.currentShapeIndex--;
     }
   }
 
-  nextShape() {
+  nextShape(): void {
     if (this.currentShapeIndex < this.shapes.length - 1) {
       this.currentShapeIndex++;
     }
   }
 
-  toggleAutoplay() {
+  toggleAutoplay(): void {
     this.autoplay = !this.autoplay;
 
     if (this.autoplay) {
