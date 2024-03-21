@@ -5,7 +5,7 @@
 }
 
 .square {
-    background-color: #ff0000;
+    background-color: #6bccea;
     border: 5px solid black; /* Outline */
 }
 
@@ -53,7 +53,7 @@
     left: 0;
     width: 200px;
     height: 70px;
-    background: #800080;
+    background: rgb(128, 0, 128);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
@@ -115,3 +115,12 @@
     border: 5px solid black; /* Outline added */
   }
 
+
+
+  .heart {
+    display: inline-block;
+    width: 200px;
+    aspect-ratio: 1;
+    border-image: radial-gradient(rgb(255, 0, 0) 69%, #0000 70%) 84.5%/50%;
+    clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+  }
