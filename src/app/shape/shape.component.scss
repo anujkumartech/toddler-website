@@ -5,12 +5,12 @@
 }
 
 .square {
-    background-color: #FF0000;
+    background-color: #ff0000;
 }
 
 .circle {
-    border-radius: 50%;
-    background-color: #FFFD00;
+    border-radius: 80%;
+    background-color: #ff0080;
 }
 
 .triangle {
@@ -18,20 +18,20 @@
     height: 0; 
     border-left: 100px solid transparent;
     border-right: 100px solid transparent;
-    border-bottom: 173.2px solid #008000; // We're using the site's primary color here
+    border-bottom: 173.2px solid #1a8000; // We're using the site's primary color here
     margin: 0 auto; // To center the triangle
 }
 
 .rectangle {
     width: 300px;
     height: 200px;
-    background-color: #007FFF;
+    background-color: #076fff;
 }
 
 .diamond {
     width: 200px;
     height: 200px;
-    background: #FF8C00;
+    background: #ff8800;
     transform: rotate(45deg);
 }
 
@@ -40,7 +40,7 @@
     position: relative;
     width: 200px;
     height: 130px;
-    background: #800080;
+    background: #770080;
 }
 
 .pentagon:before {
@@ -53,3 +53,58 @@
     background: #800080;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
+
+
+.hexagon {
+    width: 200px; /* Adjust the width */
+    height: 110px; /* Adjust the height */
+    background-color: rgb(101, 104, 101);
+    position: relative;
+    margin: 55px 0; /* Adjust the margin */
+}
+.hexagon:before, .hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 100px solid transparent; /* Adjust the border-left and border-right */
+    border-right: 100px solid transparent; /* Adjust the border-left and border-right */
+}
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: 55px solid rgb(101, 104, 101); /* Adjust the border-bottom */
+}
+.hexagon:after {
+    top: 100%;
+    width: 0;
+    border-top: 55px solid rgb(101, 104, 101); /* Adjust the border-top */
+}
+
+
+
+
+.star {
+    display: inline-block;
+    width: 250px; /* Increased from 100px to 200px */
+    height: 250px; /* Increased from 100px to 200px */
+    background-color: rgb(255, 225, 0);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+
+
+  .oval {
+    width: 200px; /* Width of the oval */
+    height: 300px; /* Height of the oval, make it less than the width for an oval shape */
+    background-color: rgb(10, 10, 10); /* Background color of the oval */
+    border-radius: 50%; /* This creates the rounded corners necessary for the oval shape */
+  }
+
+
+
+  .semi-circle {
+    width: 300px; /* Increased width of the semi-circle */
+    height: 150px; /* Increased height to maintain the semi-circle shape */
+    background-color: rgb(75, 29, 20); /* Background color of the semi-circle */
+    border-top-left-radius: 200px; /* Adjusted to maintain the rounded edge */
+    border-top-right-radius: 200px; /* Adjusted to maintain the rounded edge */
+  }
