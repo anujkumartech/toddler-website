@@ -6,19 +6,21 @@
 
 .square {
     background-color: #ff0000;
+    border: 5px solid black; /* Outline */
 }
 
 .circle {
     border-radius: 80%;
     background-color: #ff0080;
+    border: 5px solid black; /* Outline */
 }
 
 .triangle {
     width: 0; 
     height: 0; 
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 173.2px solid #1a8000; // We're using the site's primary color here
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 200.2px solid #52f729fe; // We're using the site's primary color here
     margin: 0 auto; // To center the triangle
 }
 
@@ -26,6 +28,7 @@
     width: 300px;
     height: 200px;
     background-color: #076fff;
+    border: 5px solid black; /* Outline */
 }
 
 .diamond {
@@ -88,6 +91,7 @@
     height: 250px; /* Increased from 100px to 200px */
     background-color: rgb(255, 225, 0);
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    
   }
 
 
@@ -97,6 +101,7 @@
     height: 300px; /* Height of the oval, make it less than the width for an oval shape */
     background-color: rgb(10, 10, 10); /* Background color of the oval */
     border-radius: 50%; /* This creates the rounded corners necessary for the oval shape */
+    border: 5px solid rgb(172, 17, 17);
   }
 
 
@@ -107,4 +112,6 @@
     background-color: rgb(75, 29, 20); /* Background color of the semi-circle */
     border-top-left-radius: 200px; /* Adjusted to maintain the rounded edge */
     border-top-right-radius: 200px; /* Adjusted to maintain the rounded edge */
+    border: 5px solid black; /* Outline added */
   }
+
