@@ -19,7 +19,8 @@ export class ShapeComponent {
     { class: 'semi-circle', name: 'Semi-Circle'},
     { class: 'heart', name: 'Heart'},
     { class: 'diamond', name: 'Diamond'},
-    { class: 'oval', name: 'Oval'}
+    { class: 'oval', name: 'Oval'},
+    { class: 'crescent', name: 'Crescent'}
   ];
   autoplay = false;
   autoplayTimer?: Observable<number>;
