@@ -4,6 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select'; 
 import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { NumbersComponent } from './numbers/numbers.component';
 import { AlphabetsComponent } from './alphabets/alphabets.component';
 import { NavComponent } from './nav/nav.component';
 import { ShapeComponent } from './shape/shape.component';
+import { MathComponent } from './math/math.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ShapeComponent } from './shape/shape.component';
     NumbersComponent,
     AlphabetsComponent,
     NavComponent,
-    ShapeComponent
+    ShapeComponent,
+    MathComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { ShapeComponent } from './shape/shape.component';
     MatIconModule,
     MatSidenavModule,
     LayoutModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

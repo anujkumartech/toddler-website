@@ -1,0 +1,816 @@
+
+// src/app/alphabets/alphabets.component.html
+<div class="container" fxLayout="column" fxLayoutAlign="top start" fxLayoutGap="20px">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutAlign.xs="start start" fxLayoutGap="10px">
+        <h1>Alphabets</h1>
+        <!-- Toggle Case Button -->
+    </div>
+    <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="100px" fxLayoutGap.lt-md="60px">
+        <button mat-raised-button color="primary" (click)="toggleCase()"class="first-button">
+            {{ isUppercase ? 'Switch to Lowercase' : 'Switch to Uppercase' }}
+        </button>
+        <button mat-raised-button color="primary"
+            (click)="currentAlphabet = alphabetArray[alphabetArray.indexOf(currentAlphabet) - 1]"
+            [disabled]="alphabetArray.indexOf(currentAlphabet) === 0">Previous</button>
+        <h2 class="number alphabets">{{ currentAlphabet }}</h2>
+        <button mat-raised-button color="primary"
+            (click)="currentAlphabet = alphabetArray[alphabetArray.indexOf(currentAlphabet) + 1]"
+            [disabled]="alphabetArray.indexOf(currentAlphabet) === alphabetArray.length - 1">Next</button>
+        <button mat-raised-button color="accent" (click)="toggleAutoplay()">
+            {{ autoplay ? 'Stop' : 'Start' }} autoplay
+        </button>
+    </div>
+</div>
+
+
+================================================================================
+
+
+// src/app/alphabets/alphabets.component.scss
+.first-button {
+    margin-bottom: 20px !important; /* Adjust this value as needed */
+}
+
+================================================================================
+
+
+// src/app/alphabets/alphabets.component.spec.ts
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AlphabetsComponent } from './alphabets.component';
+
+describe('AlphabetsComponent', () => {
+  let component: AlphabetsComponent;
+  let fixture: ComponentFixture<AlphabetsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ AlphabetsComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(AlphabetsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+================================================================================
+
+
+// src/app/alphabets/alphabets.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-alphabets',
+  templateUrl: './alphabets.component.html',
+  styleUrls: ['./alphabets.component.scss']
+})
+export class AlphabetsComponent implements OnInit {
+  isUppercase = true; // New property to track uppercase/lowercase
+  alphabetArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  currentAlphabet = this.alphabetArray[0];
+  autoplay = false;
+  autoplayInterval: any;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  toggleCase(): void {
+    this.isUppercase = !this.isUppercase;
+    if (this.isUppercase) {
+      this.alphabetArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    } else {
+      this.alphabetArray = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    }
+    this.currentAlphabet = this.alphabetArray[0]; // Reset to first alphabet of the new case
+  }
+
+  toggleAutoplay(): void {
+    this.autoplay = !this.autoplay;
+    if (this.autoplay) {
+      this.autoplayInterval = setInterval(() => {
+        let currentIndex = this.alphabetArray.indexOf(this.currentAlphabet);
+        currentIndex++;
+        if (currentIndex >= this.alphabetArray.length) {
+          currentIndex = 0;
+        }
+        this.currentAlphabet = this.alphabetArray[currentIndex];
+      }, 2000);
+    } else {
+      clearInterval(this.autoplayInterval);
+    }
+  }
+}
+
+
+================================================================================
+
+
+// src/app/app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NumbersComponent } from './numbers/numbers.component';
+import { AlphabetsComponent } from './alphabets/alphabets.component';
+import { ShapeComponent } from './shape/shape.component';
+
+const routes: Routes = [
+  { path: 'numbers', component: NumbersComponent },
+  { path: 'alphabets', component: AlphabetsComponent },
+  { path: 'shapes', component: ShapeComponent },
+  { path: '', redirectTo: '/numbers', pathMatch: 'full' },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule, FlexLayoutModule],
+})
+export class AppRoutingModule {}
+
+
+================================================================================
+
+
+// src/app/app.component.html
+<app-nav></app-nav>
+
+================================================================================
+
+
+// src/app/app.component.scss
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  nav a {
+    margin: 0 10px;
+  }
+  
+  .container {
+    height: 100vh;
+    padding-top: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 5rem;
+    color: #3f51b5;
+  }
+  
+  .content {
+    width: 100%;
+  }
+
+    
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 5rem;
+    color: #3f51b5;
+  }
+  
+  
+  h2.number {
+    font-size: 15rem;
+    font-weight: bold;
+    margin: 1rem;
+    color: #ff4081; //change the color to a more eye-catching one
+    &.alphabets {
+      margin-bottom: 5rem !important;
+    }
+  }
+  
+  button {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+  }
+        
+  h1 {
+    font-size: 4rem !important;
+    margin-bottom: 5rem !important;
+    color: #3f51b5;
+  }
+  
+  @media(max-width: 600px) {
+
+
+  
+    h2.number {
+      font-size: 10rem;
+    }
+  
+    button {
+      font-size: 1rem;
+      margin: 0.2rem;
+    }
+  }
+
+================================================================================
+
+
+// src/app/app.component.spec.ts
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
+      declarations: [
+        AppComponent
+      ],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have as title 'toddler-website'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('toddler-website');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.content span')?.textContent).toContain('toddler-website app is running!');
+  });
+});
+
+
+================================================================================
+
+
+// src/app/app.component.ts
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
+})
+export class AppComponent {
+  title = 'toddler-website';
+}
+
+
+================================================================================
+
+
+// src/app/app.module.ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { LayoutModule } from '@angular/cdk/layout';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NumbersComponent } from './numbers/numbers.component';
+import { AlphabetsComponent } from './alphabets/alphabets.component';
+import { NavComponent } from './nav/nav.component';
+import { ShapeComponent } from './shape/shape.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NumbersComponent,
+    AlphabetsComponent,
+    NavComponent,
+    ShapeComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    LayoutModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+================================================================================
+
+
+// src/app/nav/nav.component.html
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" class="sidenav">
+      <nav>
+        <a mat-button routerLink="/numbers" (click)="sidenav.close()">Numbers</a>
+        <a mat-button routerLink="/alphabets" (click)="sidenav.close()">Alphabets</a>
+        <a mat-button routerLink="/shapes" (click)="sidenav.close()">Shapes</a>
+      </nav>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset$ | async">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Toddler Website</span>
+        <span class="spacer"></span>
+        <nav *ngIf="(isHandset$ | async) === false">
+          <a mat-button routerLink="/numbers">Numbers</a>
+          <a mat-button routerLink="/alphabets">Alphabets</a>
+          <a mat-button routerLink="/shapes">Shapes</a>
+        </nav>
+      </mat-toolbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+
+================================================================================
+
+
+// src/app/nav/nav.component.scss
+mat-toolbar {
+    a {
+      margin: 0 10px;
+      color: white; // White color for desktop navigation items
+      font-weight: bold; // Make the text bold
+      transition: color 0.3s ease; // Smooth color transition effect
+    }
+  
+    a:hover {
+      color: #007BFF; // Bright blue color on hover
+    }
+  }
+  
+  .sidenav {
+    width: 200px;
+  
+    a {
+      display: block;
+      margin: 10px 0;
+      color: #007BFF; // Bright blue color for sidenav items
+      font-weight: bold; // Make the text bold
+      transition: color 0.3s ease; // Smooth color transition effect
+    }
+  
+    a:hover {
+      color: #0056b3; // Darker blue color on hover
+    }
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .content {
+    padding-top: 64px; // Adjust to the height of your toolbar
+  }
+  
+
+================================================================================
+
+
+// src/app/nav/nav.component.spec.ts
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NavComponent } from './nav.component';
+
+describe('NavComponent', () => {
+  let component: NavComponent;
+  let fixture: ComponentFixture<NavComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ NavComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(NavComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+================================================================================
+
+
+// src/app/nav/nav.component.ts
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+
+@Component({
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss']
+})
+export class NavComponent {
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
+}
+
+
+================================================================================
+
+
+// src/app/numbers/numbers.component.html
+<div class="container" fxLayout="column" fxLayoutAlign="top start" fxLayoutGap="20px">
+    <h1>Numbers</h1>
+    <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="80px" fxLayoutGap.lt-md="60px">
+        <button mat-raised-button color="primary" (click)="currentNumber = currentNumber - 1" [disabled]="currentNumber === 1">Previous</button>
+        <h2 class="number">{{ currentNumber }}</h2>
+        <button mat-raised-button color="primary" (click)="currentNumber = currentNumber + 1" [disabled]="currentNumber === maxNumber">Next</button>
+
+        <button mat-raised-button color="accent" (click)="toggleAutoplay()">
+            {{ autoplay ? 'Stop' : 'Start' }} autoplay
+        </button>
+    </div>
+
+</div>
+
+
+================================================================================
+
+
+// src/app/numbers/numbers.component.scss
+
+
+================================================================================
+
+
+// src/app/numbers/numbers.component.spec.ts
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NumbersComponent } from './numbers.component';
+
+describe('NumbersComponent', () => {
+  let component: NumbersComponent;
+  let fixture: ComponentFixture<NumbersComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ NumbersComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(NumbersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+================================================================================
+
+
+// src/app/numbers/numbers.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-numbers',
+  templateUrl: './numbers.component.html',
+  styleUrls: ['./numbers.component.scss']
+})
+export class NumbersComponent implements OnInit {
+  currentNumber = 1;
+  autoplay = false;
+  autoplayInterval: any;
+  readonly maxNumber = 50; // Declare a readonly property for the maximum number
+
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  toggleAutoplay(): void {
+    this.autoplay = !this.autoplay;
+    if (this.autoplay) {
+      this.autoplayInterval = setInterval(() => {
+        this.currentNumber++;
+        if (this.currentNumber > this.maxNumber) { // Use the maxNumber property here
+          this.currentNumber = 1;
+        }
+      }, 2000);
+    } else {
+      clearInterval(this.autoplayInterval);
+    }
+  }
+}
+
+
+================================================================================
+
+
+// src/app/shape/shape.component.html
+<div class="container" fxLayout="column" fxLayoutAlign="top start" fxLayoutGap="20px">
+    <h1>Shapes</h1>
+    <div class="content" fxLayout="column" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="80px" fxLayoutGap.lt-md="60px">
+        <button mat-raised-button color="primary" (click)="previousShape()" [disabled]="currentShapeIndex === 0">Previous</button>
+        <!-- Shape Container -->
+        <div>
+            <div class="shape" [ngClass]="shapes[currentShapeIndex].class"></div>
+            <!-- Shape Name Displayed Below -->
+            <p class="shape-name">{{ shapes[currentShapeIndex].name}}</p>
+        </div>
+        <button mat-raised-button color="primary" (click)="nextShape()" [disabled]="currentShapeIndex === shapes.length - 1">Next</button>
+        <button mat-raised-button color="accent" (click)="toggleAutoplay()">
+            {{ autoplay ? 'Stop' : 'Start' }} autoplay
+        </button>
+    </div>
+</div>
+
+
+================================================================================
+
+
+// src/app/shape/shape.component.scss
+.shape {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.square {
+    background-color: #3F00FF;
+    
+}
+
+.circle {
+    border-radius: 80%;
+    background-color: #ff0080;
+    
+}
+
+.triangle {
+    width: 0; 
+    height: 0; 
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 189.2px solid #52f729fe; // We're using the site's primary color here
+    margin: 0 auto; // To center the triangle
+}
+
+.rectangle {
+    width: 300px;
+    height: 200px;
+    background-color: #6bccea;
+    
+}
+
+.diamond {
+    width: 160px; /* Set the width of the diamond */
+    height: 160px; /* Set the height of the diamond, should be equal to width for a perfect diamond shape */
+    background-color: rgb(255, 102, 0); /* Set the diamond's color */
+    transform: rotate(45deg); /* Rotate the square 45 degrees to form a diamond */
+    margin: 50px; /* Optional: Adds some space around the diamond */
+  }
+
+.pentagon {
+    margin: 20px auto; 
+    position: relative;
+    width: 200px;
+    height: 130px;
+    background: rgb(143,0,255);
+}
+
+.pentagon:before {
+    content: "";
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 200px;
+    height: 70px;
+    background: rgb(143,0,255);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+
+.hexagon {
+    width: 200px; /* Adjust the width */
+    height: 110px; /* Adjust the height */
+    background-color: rgb(101, 104, 101);
+    position: relative;
+    margin: 55px 0; /* Adjust the margin */
+}
+.hexagon:before, .hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 100px solid transparent; /* Adjust the border-left and border-right */
+    border-right: 100px solid transparent; /* Adjust the border-left and border-right */
+}
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: 55px solid rgb(101, 104, 101); /* Adjust the border-bottom */
+}
+.hexagon:after {
+    top: 100%;
+    width: 0;
+    border-top: 55px solid rgb(101, 104, 101); /* Adjust the border-top */
+}
+
+
+
+
+.star {
+    display: inline-block;
+    width: 250px; /* Increased from 100px to 200px */
+    height: 250px; /* Increased from 100px to 200px */
+    background-color: rgb(255, 225, 0);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    
+  }
+
+
+
+  .oval {
+    width: 200px; /* Width of the oval */
+    height: 300px; /* Height of the oval, make it less than the width for an oval shape */
+    background-color: rgb(10, 10, 10); /* Background color of the oval */
+    border-radius: 50%; /* This creates the rounded corners necessary for the oval shape */
+    
+  }
+
+
+
+  .semi-circle {
+    width: 300px; /* Increased width of the semi-circle */
+    height: 150px; /* Increased height to maintain the semi-circle shape */
+    background-color: rgb(75, 29, 20); /* Background color of the semi-circle */
+    border-top-left-radius: 200px; /* Adjusted to maintain the rounded edge */
+    border-top-right-radius: 200px; /* Adjusted to maintain the rounded edge */
+    
+  }
+
+
+
+  .heart {
+    display: inline-block;
+    width: 200px;
+    aspect-ratio: 1;
+    border-image: radial-gradient(rgb(255, 0, 0) 69%, #0000 70%) 84.5%/50%;
+    clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+  }
+
+
+
+  .shape-name {
+    font-size: 70px; /* Set the font size as desired */
+  }
+
+
+
+  .crescent {
+    width: 250px; /* Increased from 100px to 150px */
+    height: 250px; /* Increased from 100px to 150px */
+    background-color: rgb(23, 118, 214); /* Crescent color */
+    border-radius: 100%;
+    position: relative;
+  }
+  
+  .crescent::before {
+    content: "";
+    position: absolute;
+    width: 190px; /* Increased from 80px, maintaining the ratio for the crescent effect */
+    height: 190px; /* Increased from 80px, maintaining the ratio */
+    background-color: white; /* Background color of the container to "cut out" part of the crescent */
+    border-radius: 100%;
+    right: -20px; /* Adjusted to control the thickness of the crescent, more negative to move it further out */
+  }
+  
+
+================================================================================
+
+
+// src/app/shape/shape.component.spec.ts
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ShapeComponent } from './shape.component';
+
+describe('ShapeComponent', () => {
+  let component: ShapeComponent;
+  let fixture: ComponentFixture<ShapeComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ShapeComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(ShapeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+================================================================================
+
+
+// src/app/shape/shape.component.ts
+import { Component } from '@angular/core';
+import { Observable, timer } from 'rxjs';
+
+@Component({
+  selector: 'app-shape',
+  templateUrl: './shape.component.html',
+  styleUrls: ['./shape.component.scss']
+})
+export class ShapeComponent {
+  currentShapeIndex = 0;
+  shapes = [
+    { class: 'circle', name: 'Circle' },
+    { class: 'square', name: 'Square' },
+    { class: 'triangle', name: 'Triangle' },
+    { class: 'rectangle', name: 'Rectangle' },
+    { class: 'pentagon', name: 'Pentagon'},
+    { class: 'hexagon', name: 'Hexagon'},
+    { class: 'star', name: 'Star'},
+    { class: 'semi-circle', name: 'Semi-Circle'},
+    { class: 'heart', name: 'Heart'},
+    { class: 'diamond', name: 'Diamond'},
+    { class: 'oval', name: 'Oval'},
+    { class: 'crescent', name: 'Crescent'}
+  ];
+  autoplay = false;
+  autoplayTimer?: Observable<number>;
+
+  constructor() { }
+
+  previousShape(): void {
+    if (this.currentShapeIndex > 0) {
+      this.currentShapeIndex--;
+    }
+  }
+
+  nextShape(): void {
+    if (this.currentShapeIndex < this.shapes.length - 1) {
+      this.currentShapeIndex++;
+    }
+  }
+
+  toggleAutoplay(): void {
+    this.autoplay = !this.autoplay;
+
+    if (this.autoplay) {
+      this.autoplayTimer = timer(2000, 2000);
+      this.autoplayTimer.subscribe(() => {
+        this.nextShape();
+        if (this.currentShapeIndex === this.shapes.length - 1) {
+          this.currentShapeIndex = 0;
+        }
+      });
+    } else if (this.autoplayTimer) {
+      this.autoplayTimer = undefined;
+    }
+  }
+}
+
+
+================================================================================
+

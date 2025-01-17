@@ -5,7 +5,7 @@
 }
 
 .square {
-    background-color: #6bccea;
+    background-color: #3F00FF;
     
 }
 
@@ -27,7 +27,7 @@
 .rectangle {
     width: 300px;
     height: 200px;
-    background-color: #076fff;
+    background-color: #6bccea;
     
 }
 
@@ -44,7 +44,7 @@
     position: relative;
     width: 200px;
     height: 130px;
-    background: #770080;
+    background: rgb(143,0,255);
 }
 
 .pentagon:before {
@@ -54,7 +54,7 @@
     left: 0;
     width: 200px;
     height: 70px;
-    background: rgb(128, 0, 128);
+    background: rgb(143,0,255);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
@@ -131,3 +131,24 @@
   .shape-name {
     font-size: 70px; /* Set the font size as desired */
   }
+
+
+
+  .crescent {
+    width: 250px; /* Increased from 100px to 150px */
+    height: 250px; /* Increased from 100px to 150px */
+    background-color: rgb(23, 118, 214); /* Crescent color */
+    border-radius: 100%;
+    position: relative;
+  }
+  
+  .crescent::before {
+    content: "";
+    position: absolute;
+    width: 190px; /* Increased from 80px, maintaining the ratio for the crescent effect */
+    height: 190px; /* Increased from 80px, maintaining the ratio */
+    background-color: white; /* Background color of the container to "cut out" part of the crescent */
+    border-radius: 100%;
+    right: -20px; /* Adjusted to control the thickness of the crescent, more negative to move it further out */
+  }
+  
