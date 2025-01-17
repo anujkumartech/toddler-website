@@ -1,0 +1,39 @@
+<div class="container" [ngClass]="{'correct-answer': isCorrect === true, 'incorrect-answer': isCorrect === false}">
+    <h1>Math Practice</h1>
+    
+    <div class="first-number-selector">
+      <h3>Select First Number:</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>First Number</mat-label>
+        <mat-select [(value)]="selectedFirstNumber" (selectionChange)="onFirstNumberChange($event.value)">
+          <mat-option *ngFor="let num of availableNumbers" [value]="num">
+            {{num}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="content">
+      <div class="problem">
+        <h2>{{ currentProblem.num1 }} + {{ currentProblem.num2 }} = ?</h2>
+      </div>
+  
+      <div class="options">
+        <button mat-raised-button 
+                *ngFor="let option of currentProblem.options"
+                (click)="checkAnswer(option)"
+                [disabled]="isCorrect === true">
+          {{ option }}
+        </button>
+      </div>
+  
+      <!-- <div class="history" *ngIf="answeredProblems.length > 0">
+        <h3>Correct Answers:</h3>
+        <div class="answer-list">
+          <div *ngFor="let problem of answeredProblems" class="answer-item">
+            {{ problem.num1 }} + {{ problem.num2 }} = {{ problem.correctAnswer }}
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
